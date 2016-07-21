@@ -27,6 +27,7 @@ $app->post('/callback', function (Request $request) use ($app, $bot) {
     $time = time() ;
     $filename = 'test.txt';
     $fp = fopen($filename, 'r');
+    $file = file_get_contents($filename)
     
     foreach ($body['result'] as $obj) {
         $app['monolog']->addInfo(sprintf('obj: %s', json_encode($obj)));
@@ -35,7 +36,7 @@ $app->post('/callback', function (Request $request) use ($app, $bot) {
 
         if ($content['text']) {
             $bot->sendText($from, sprintf('%s%d年%d月%d日%d時%d分ですa', $content['text'],date( "Y" , $time ),date( "m" , $time ),date( "d" , $time ),date( "G" , $time ),date( "i" , $time )));
-            $bot->sendText($from, sprintf('%sあ%s', $content['text'],$fp));
+            $bot->sendText($from, sprintf('%sあ%s', $content['text'],$file));
         }
     }
 
