@@ -32,7 +32,7 @@ $app->post('/callback', function (Request $request) use ($app, $bot) {
         $content = $obj['content'];
 
         if ($content['text']) {
-            $bot->sendText($from, sprintf('%s%dですb', $content['text'],$time)); 
+            $bot->sendText($from, sprintf('%s%dですb', $content['text'],date( "Y/m/d" , $time ))); 
         }
     }
 
