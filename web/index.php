@@ -34,7 +34,7 @@ $app->post('/callback', function (Request $request) use ($app, $bot) {
 
         if ($content['text']) {
             $bot->sendText($from, sprintf('%s%d年%d月%d日%d時%d分ですa', $content['text'],date( "Y" , $time ),date( "m" , $time ),date( "d" , $time ),date( "G" , $time ),date( "i" , $time )));
-            $bot->sendText($from, sprintf('%sあ%s', $content['text'],$filename['text']);
+            $bot->sendText($from, sprintf('%sあ', $content['text']);
         }
     }
 
