@@ -24,6 +24,7 @@ $app->before(function (Request $request) use($bot) {
 $app->post('/callback', function (Request $request) use ($app, $bot) {
     // Let's hack from here!
     $body = json_decode($request->getContent(), true);
+    $time = time() ;
 
     foreach ($body['result'] as $obj) {
         $app['monolog']->addInfo(sprintf('obj: %s', json_encode($obj)));
@@ -31,7 +32,7 @@ $app->post('/callback', function (Request $request) use ($app, $bot) {
         $content = $obj['content'];
 
         if ($content['text']) {
-            $bot->sendText($from, sprintf('%s%sですb', $content['text'],$content['text'])); 
+            $bot->sendText($from, sprintf('%s%dですb', $content['text'],$time)); 
         }
     }
 
