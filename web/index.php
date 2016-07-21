@@ -25,7 +25,6 @@ $app->post('/callback', function (Request $request) use ($app, $bot) {
     // Let's hack from here!
     $body = json_decode($request->getContent(), true);
     $time = time() ;
-    $filename = 'test.txt';
 
     foreach ($body['result'] as $obj) {
         $app['monolog']->addInfo(sprintf('obj: %s', json_encode($obj)));
